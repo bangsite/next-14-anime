@@ -1,13 +1,98 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Logs
+logs
+*.log
+
+# Build artifacts
+dist/
+.nuxt/
+.nuxt-storybook/
+.storybook/
+.cache/
+public/_nuxt/
+public/_nuxt-storybook/
+public/_storybook/
+.pnpm-debug.log*
+.pnpm-store
+.pnp.*
+
+# Environment variables
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Editor and IDE files
+*.swp
+
+# Compiled templates
+*.pug
+*.jade
+
+# Dependency directories
+.pnpm
+node_modules
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# JetBrains
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp/
+.pnpm/
+pnpm-lock.yaml
+#package-lock.json
+#yarn.lock
+
+# Testing
+/coverage
+/coverage/*
+
+# E2E
+/cypress/screenshots
+/cypress/videos
+
+# Debug
+/debug.log
+debug.log
+
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# nuxt-start
+out
+
+# Storybook build
+/storybook-static
 
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-
-# testing
-/coverage
 
 # next.js
 /.next/
@@ -16,14 +101,6 @@
 # production
 /build
 
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # local env files
 .env*.local

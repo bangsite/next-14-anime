@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
+/** @type {{images: {remotePatterns: [{protocol: string, hostname: string}]}, reactStrictMode: boolean}} */
 const nextConfig = {
+    reactStrictMode: true,
+
     images: {
         remotePatterns: [
             {
