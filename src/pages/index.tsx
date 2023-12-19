@@ -1,19 +1,80 @@
 import {ReactElement} from "react";
-import {Hero} from "@/components/Hero";
-import MainLayout from "../layouts/MainLayout";
-import RootLayout from "@/layouts/RootLayout";
+import {GetServerSideProps} from "next";
+import {Icon} from "@iconify/react";
 
-const Home = () => {
+import {AnimeCard} from "@/components/AnimeCard";
+import {Button} from "@/components/ui/button";
+import {SlideTop} from "@/components/SlideTop";
+
+import MainLayout from "../layouts/MainLayout";
+import {fetchDataAnimeHome} from "@/hooks/fetchDataAnimeHome";
+import {Anime} from "@/types/anime";
+
+let apiCallCount = 0;
+
+export const getServerSideProps: GetServerSideProps<any> = async () => {
+    // @ts-ignore
+    const [animeTop, animSeasons, animeAll]= await fetchDataAnimeHome();
+
+    // Increment the API call count
+    apiCallCount++;
+    console.log(`API has been called ${apiCallCount} times`);
+    return {
+        props: {
+            animeTop,
+            animSeasons,
+            animeAll
+        }
+    }
+}
+
+const Home = ({animeTop, animSeasons, animeAll}:Record<string, any>) => {
     return (
         <>
-                <Hero/>
-                <main className="sm:p-16 py-16 px-8 flex flex-col gap-10">
-                    <h2 className="text-3xl text-white font-bold">Explore Anime</h2>
+            <SlideTop data={animeAll.data}/>
 
-                    <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-10">
-                        section 1
-                    </section>
-                </main>
+            <main className="container py-8 sm:py-16 flex flex-col gap-8">
+                <section className="flex flex-col ">
+                    <Button className="bg-gradient-primary w-fit text-white p-4 mb-4 capitalize">
+                        <span className="mr-2 font-medium text-xl">Top Anime</span>
+
+                        <Icon icon="iconamoon:arrow-right-2-duotone" width={24}/>
+                    </Button>
+
+                    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+                        {animeTop.data && animeTop.data.length ? animeTop.data?.map((item: Anime, index: number) => (
+                            <AnimeCard key={item.mal_id} anime={item} index={index}/>)) : ""}
+                    </div>
+                </section>
+
+                <section className="flex flex-col">
+                    <Button className="bg-gradient-primary w-fit text-white p-4 mb-4 capitalize">
+                        <span className="mr-2 font-medium text-xl">Anime Seasons</span>
+
+                        <Icon icon="iconamoon:arrow-right-2-duotone" width={24}/>
+                    </Button>
+
+                    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+
+                        {animSeasons.data && animSeasons.data.length ? animSeasons.data?.map((item: Anime, index: number) => (
+                            <AnimeCard key={item.mal_id} anime={item} index={index}/>)) : ""}
+                    </div>
+                </section>
+
+                <section className="flex flex-col">
+                    <Button className="bg-gradient-primary w-fit text-white p-4 mb-4 capitalize">
+                        <span className="mr-2 font-medium text-xl">Anime All</span>
+
+                        <Icon icon="iconamoon:arrow-right-2-duotone" width={24}/>
+                    </Button>
+
+                    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                        {animeAll.data && animeAll.data.length ? animeAll.data?.map((item: Anime, index: number) => (
+                            <AnimeCard key={item.mal_id} anime={item} index={index}/>)) : ""}
+                    </div>
+                </section>
+            </main>
         </>
     )
 }

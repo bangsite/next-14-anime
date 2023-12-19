@@ -1,16 +1,26 @@
+export interface ImageType {
+    "jpg": {
+        "image_url": "string",
+        "small_image_url": "string",
+        "large_image_url": "string"
+    },
+    "webp": {
+        "image_url": "string",
+        "small_image_url": "string",
+        "large_image_url": "string"
+    }
+}
+
 export interface Anime {
-    id: string;
+    mal_id: string;
     title: string;
     title_english: string;
-    image: {
-        jpg: string;
-        webp: string;
-    };
+    images: ImageType;
     type: string;
     episodes: number;
     favorites: number;
     score: number;
-    season: string,
+    season?: string,
     status: string,
     year: number,
 }

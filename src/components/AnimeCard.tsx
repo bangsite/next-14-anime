@@ -25,27 +25,29 @@ export const AnimeCard = ({anime, index}: Prop) => {
                 duration: 0.5
             }}
             viewport={{amount: 0}}
-            className="max-w-sm rounded relative w-full">
-            <div className="relative w-full h-[32vh]">
+            className=" rounded relative w-full">
+            <div className="cursor-pointer relative w-full h-[350px] xs:h-[30vh] sm:h-[32vh] ">
                 <Image
                     src={`${anime?.images?.jpg?.image_url}`}
                     alt={anime.title}
                     fill
                     className="rounded-xl"
                 />
-                <div className="absolute left-[0.5rem] bottom-[0.5rem] bg-black/50 text-white font-medium px-2 py-0.5  rounded-xl">
-                    <strong>{anime.episodes} ep</strong>
+                <div
+                    className="absolute left-[0.5rem] bottom-[0.5rem] bg-black/60 text-white font-extralight px-2 py-0.5 rounded-xl">
+                    {anime.episodes} ep
                 </div>
-                <div className="flex flex-row gap-2 items-center absolute right-[0.5rem] bottom-[0.5rem] bg-black/30 rounded-xl px-2 py-0.5">
-                    <Icon icon="solar:star-bold" color="#FFAD49" />
-                    <p className="text-base font-bold text-[#FFAD49]">{anime.score}</p>
+                <div
+                    className="flex flex-row gap-1 items-center absolute right-[0.5rem] bottom-[0.5rem] bg-black/60 rounded-xl px-2 py-0.5">
+                    <Icon icon="fluent:star-28-filled" color="#FFAD49" width={19}/>
+                    <span className="font-extralight text-base text-yellow-600">{anime.score}</span>
                 </div>
             </div>
 
-            <div className="py-4 flex flex-col">
+            <div className="py-2 xs:py-4 flex flex-col">
                 <div className="flex justify-between items-center gap-1">
                     <h2 className="font-bold text-xl line-clamp-1 w-full">
-                        {anime.title_english}
+                        {anime.title_english || anime.title}
                     </h2>
                 </div>
                 <div className="flex items-center justify-between gap-4">

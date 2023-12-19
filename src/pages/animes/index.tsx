@@ -38,7 +38,7 @@ const Anime = ({initialData}) => {
 
                 <section className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
                     {initialData ? initialData?.map((item: Anime, index: number) => (
-                        <AnimeCard key={item.id} anime={item} index={index}/>)) : ""}
+                        <AnimeCard key={item.mal_id} anime={item} index={index}/>)) : ""}
                 </section>
 
                 <LoadMore/>

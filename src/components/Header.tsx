@@ -13,7 +13,7 @@ export const Header = () => {
 
     return (
         <div className="bg-primary text-white shadow">
-            <div className="container mx-auto flex items-center justify-between gap-4 py-4">
+            <div className="container mx-auto flex items-center justify-between gap-4 py-2 min-h-[60px]">
                 <Link href="/">
                     <Image
                         src="./logo.svg"

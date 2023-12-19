@@ -11,6 +11,6 @@ export const renderCardAnimes = async (page: number) => {
     console.log(data);
 
     return data.map((item: AnimeProp, index: number) => (
-        <AnimeCard key={item.id} anime={item} index={index}/>
+        <AnimeCard key={item.mal_id} anime={item} index={index}/>
 ));
 }
