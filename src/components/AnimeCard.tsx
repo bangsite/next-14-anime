@@ -28,7 +28,7 @@ export const AnimeCard = ({anime, index}: Prop) => {
             className=" rounded relative w-full">
             <div className="cursor-pointer relative w-full h-[350px] xs:h-[30vh] sm:h-[32vh] ">
                 <Image
-                    src={`${anime?.images?.jpg?.image_url}`}
+                    src={`${anime?.images?.webp?.image_url}`}
                     alt={anime.title}
                     fill
                     className="rounded-xl"

@@ -3,9 +3,8 @@ import ApiFactory from "./apiFactory";
 import {ApiResponse} from "@/types/response";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log(API_URL)
 
-class AnimeSeasonsRepository {
+class AnimeSeasonsJikan {
     private apiFactory: ApiFactory;
 
     constructor() {
@@ -13,7 +12,6 @@ class AnimeSeasonsRepository {
     }
 
     async getSeasonsNow(params?: Record<string, any>): Promise<ApiResponse> {
-        console.log('params:::',params)
         return this.apiFactory.get<ApiResponse>('seasons/now', params);
     }
 
@@ -22,4 +20,4 @@ class AnimeSeasonsRepository {
     }
 }
 
-export default AnimeSeasonsRepository;
+export default AnimeSeasonsJikan;

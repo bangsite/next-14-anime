@@ -3,7 +3,7 @@
 import Image from "next/image";
 import {useInView} from "react-intersection-observer";
 import {useEffect, useState} from "react";
-import AnimeTopRepository from "@/repositories/animeTopRepository";
+import AnimeTopJikan from "@/repositories/animeTopJikan";
 import {Anime} from "@/types/anime";
 import {AnimeCard} from "@/components/AnimeCard";
 
@@ -16,7 +16,7 @@ export const LoadMore = () => {
     const [data, setData] = useState<Anime[]>([]);
 
     useEffect(() => {
-        const animeRepository = new AnimeTopRepository();
+        const animeRepository = new AnimeTopJikan();
         const fetchNextPageData = async () => {
             const {data}:Record<string, any> = await animeRepository.getAll({page: page, limit: 8});
 

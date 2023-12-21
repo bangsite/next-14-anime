@@ -14,8 +14,8 @@ let apiCallCount = 0;
 
 export const getServerSideProps: GetServerSideProps<any> = async () => {
     // @ts-ignore
-    const [animeTop, animSeasons, animeAll]= await fetchDataAnimeHome();
-
+    const [animeTop, animSeasons, animeAll, animeTrendingKitsu]= await fetchDataAnimeHome();
+    console.log(animeTrendingKitsu)
     // Increment the API call count
     apiCallCount++;
     console.log(`API has been called ${apiCallCount} times`);
@@ -23,15 +23,16 @@ export const getServerSideProps: GetServerSideProps<any> = async () => {
         props: {
             animeTop,
             animSeasons,
-            animeAll
+            animeAll,
+            animeTrendingKitsu
         }
     }
 }
 
-const Home = ({animeTop, animSeasons, animeAll}:Record<string, any>) => {
+const Home = ({animeTop, animSeasons, animeAll,animeTrendingKitsu}:Record<string, any>) => {
     return (
         <>
-            <SlideTop data={animeAll.data}/>
+            <SlideTop data={animeTrendingKitsu.data}/>
 
             <main className="container py-8 sm:py-16 flex flex-col gap-8">
                 <section className="flex flex-col ">

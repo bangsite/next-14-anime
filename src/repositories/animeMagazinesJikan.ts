@@ -3,9 +3,8 @@ import ApiFactory from "./apiFactory";
 import {ApiResponse} from "@/types/response";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log(API_URL)
 
-class AnimeRepository {
+class AnimeMagazinesJikan {
     private apiFactory: ApiFactory;
 
     constructor() {
@@ -13,9 +12,9 @@ class AnimeRepository {
     }
 
     async getAll(params?: Record<string, any>): Promise<ApiResponse> {
-        return this.apiFactory.get<ApiResponse>('anime', params);
+        return this.apiFactory.get<ApiResponse>('magazines', params);
     }
 
 }
 
-export default AnimeRepository;
+export default AnimeMagazinesJikan;

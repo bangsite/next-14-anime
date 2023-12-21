@@ -13,7 +13,6 @@ class ApiFactory {
 
     async get<T>(endpoint: string, params?: Record<string, any>): Promise<T> {
         const queryString = params ? this.buildQueryString(params) : '';
-        console.log(`${this.baseUrl}/${endpoint}${queryString}`)
         const response = await fetch(`${this.baseUrl}/${endpoint}${queryString}`);
 
         return response.json();

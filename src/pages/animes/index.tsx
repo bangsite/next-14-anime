@@ -2,14 +2,14 @@ import {ReactElement} from "react";
 
 import RootLayout from "../../layouts/MainLayout";
 import {LoadMore} from "@/components/LoadMore";
-import AnimeTopRepository from "@/repositories/animeTopRepository";
+import AnimeTopJikan from "@/repositories/animeTopJikan";
 // import {AnimeCard, AnimeProp} from "@/components/AnimeCard";
 import {Anime} from "@/types/anime";
 import {AnimeCard} from "@/components/AnimeCard";
 
 export async function getServerSideProps() {
     try {
-        const animeRepository = new AnimeTopRepository();
+        const animeRepository = new AnimeTopJikan();
         const {data}: Record<string, any> = await animeRepository.getAll({page: 1, limit: 8});
         console.log(data);
 
