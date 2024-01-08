@@ -25,22 +25,25 @@ export const AnimeCard = ({anime, index}: Prop) => {
                 duration: 0.5
             }}
             viewport={{amount: 0}}
-            className=" rounded relative w-full">
-            <div className="cursor-pointer relative w-full h-[350px] xs:h-[30vh] sm:h-[32vh] ">
-                <Image
-                    src={`${anime?.images?.webp?.image_url}`}
-                    alt={anime.title}
-                    fill
-                    className="rounded-xl"
-                />
+            className="rounded relative w-full">
+            <div className="cursor-pointer relative w-full h-[350px] xs:h-[30vh] sm:h-[32vh] overflow-hidden group rounded-xl">
+                <picture>
+                    <Image
+                        src={`${anime?.images?.webp?.image_url}`}
+                        alt={anime.title}
+                        fill
+                        className="rounded-xl group-hover:scale-105 duration-300"
+                    />
+                </picture>
+
                 <div
                     className="absolute left-[0.5rem] bottom-[0.5rem] bg-black/60 text-white font-extralight px-2 py-0.5 rounded-xl">
-                    {anime.episodes} ep
+                    {anime.episodes || 0} ep
                 </div>
                 <div
                     className="flex flex-row gap-1 items-center absolute right-[0.5rem] bottom-[0.5rem] bg-black/60 rounded-xl px-2 py-0.5">
                     <Icon icon="fluent:star-28-filled" color="#FFAD49" width={19}/>
-                    <span className="font-extralight text-base text-yellow-600">{anime.score}</span>
+                    <span className="font-extralight text-base text-yellow-600">{anime.score || '0.0'}</span>
                 </div>
             </div>
 

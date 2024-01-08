@@ -32,9 +32,9 @@ export const SearchTop = () => {
     }
 
     return (
-            <div className="flex items-center relative">
-                <Input type="text" placeholder="Enter keyword ..."/>
-                <Button className="absolute right-0 top-0 bottom-0 border-l rounded-l-none" variant="ghost">
+            <div className="flex items-center relative text-black">
+                <Input type="text" placeholder="Enter keyword ..." />
+                <Button className="absolute right-0 top-0 bottom-0 border-l rounded-l-none active:bg-muted" variant="ghost" >
                     <Icon icon="ion:search-outline" height={24} color="#666"/>
                 </Button>
             </div>

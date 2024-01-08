@@ -14,7 +14,7 @@ export const Header = () => {
 
     return (
         <div className="bg-black text-white shadow">
-            <div className="container mx-auto flex items-center justify-between gap-4 h-[60px]">
+            <div className="container mx-auto flex items-center justify-between gap-4 h-[65px]">
                 <div className="header__left flex items-center justify-items-start gap-6 h-full">
                     <Link href="/">
                         <Image

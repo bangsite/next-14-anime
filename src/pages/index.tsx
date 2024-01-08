@@ -14,7 +14,7 @@ let apiCallCount = 0;
 
 export const getServerSideProps: GetServerSideProps<any> = async () => {
     // @ts-ignore
-    const [animeTop, animSeasons, animeAll, animeTrendingKitsu]= await fetchDataAnimeHome();
+    const [animeTop, animSeasons, animeAll, animeTrendingKitsu] = await fetchDataAnimeHome();
     console.log(animeTrendingKitsu)
     // Increment the API call count
     apiCallCount++;
@@ -29,18 +29,25 @@ export const getServerSideProps: GetServerSideProps<any> = async () => {
     }
 }
 
-const Home = ({animeTop, animSeasons, animeAll,animeTrendingKitsu}:Record<string, any>) => {
+const Home = ({animeTop, animSeasons, animeAll, animeTrendingKitsu}: Record<string, any>) => {
     return (
         <>
             <SlideTop data={animeTrendingKitsu.data}/>
 
             <main className="container py-8 sm:py-16 flex flex-col gap-8">
-                <section className="flex flex-col ">
-                    <Button className="bg-gradient-primary w-fit text-white p-4 mb-4 capitalize">
-                        <span className="mr-2 font-medium text-xl">Top Anime</span>
+                <section className="flex flex-col">
+                    <div className="flex items-center justify-start gap-8 mb-4">
+                        <Button className="bg-gradient-primary w-fit text-white p-4 capitalize">
+                            <span className="mr-2 font-medium text-xl">Top Anime</span>
 
-                        <Icon icon="iconamoon:arrow-right-2-duotone" width={24}/>
-                    </Button>
+                            <Icon icon="iconamoon:arrow-right-2-duotone" width={24}/>
+                        </Button>
+                        <div className="flex items-center justify-items-start gap-8">
+                            <a href="#" className="text-lg font-medium hover:text-primary">All</a>
+                            <a href="#" className="text-lg font-medium hover:text-primary">Anime series</a>
+                            <a href="#" className="text-lg font-medium hover:text-primary">Anime single</a>
+                        </div>
+                    </div>
 
                     <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
 
@@ -66,7 +73,6 @@ const Home = ({animeTop, animSeasons, animeAll,animeTrendingKitsu}:Record<string
                 <section className="flex flex-col">
                     <Button className="bg-gradient-primary w-fit text-white p-4 mb-4 capitalize">
                         <span className="mr-2 font-medium text-xl">Anime All</span>
-
                         <Icon icon="iconamoon:arrow-right-2-duotone" width={24}/>
                     </Button>
 
