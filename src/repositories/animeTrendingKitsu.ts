@@ -4,7 +4,7 @@ import {ApiResponse} from "@/types/response";
 
 const API_URL = process.env.NEXT_PUBLIC_API_KITSU;
 
-class AnimeKitsu {
+class AnimeTrendingKitsu {
     private apiFactory: ApiFactory;
 
     constructor() {
@@ -17,4 +17,4 @@ class AnimeKitsu {
 
 }
 
-export default AnimeKitsu;
+export default AnimeTrendingKitsu;

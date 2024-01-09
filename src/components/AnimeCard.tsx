@@ -2,6 +2,8 @@ import Image from "next/image";
 import {MotionDiv} from "./MotionDiv";
 import {Anime} from "@/types/anime";
 import {Icon} from "@iconify/react";
+import {useState} from "react";
+import Link from "next/link";
 
 interface Prop {
     anime: Anime;
@@ -14,6 +16,8 @@ const variants = {
 }
 
 export const AnimeCard = ({anime, index}: Prop) => {
+    const [errorImage, setErrorImage] = useState('');
+
     return (
         <MotionDiv
             variants={variants}
@@ -32,7 +36,11 @@ export const AnimeCard = ({anime, index}: Prop) => {
                         src={`${anime?.images?.webp?.image_url}`}
                         alt={anime.title}
                         fill
+                        style={{objectFit: "cover"}}
+                        placeholder="blur"
+                        blurDataURL="/not-found.png"
                         className="rounded-xl group-hover:scale-105 duration-300"
+                        onError={()=>setErrorImage('/not-found.png')}
                     />
                 </picture>
 
@@ -49,9 +57,12 @@ export const AnimeCard = ({anime, index}: Prop) => {
 
             <div className="py-2 xs:py-4 flex flex-col">
                 <div className="flex justify-between items-center gap-1">
-                    <h2 className="font-bold text-xl line-clamp-1 w-full">
-                        {anime.title_english || anime.title}
-                    </h2>
+                    <Link href={`/animes/${anime.mal_id}`}>
+                        <h2 className="font-bold text-xl line-clamp-1 w-full">
+                            {anime.title_english || anime.title}
+                        </h2>
+                    </Link>
+
                 </div>
                 <div className="flex items-center justify-between gap-4">
 

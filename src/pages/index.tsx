@@ -14,22 +14,23 @@ let apiCallCount = 0;
 
 export const getServerSideProps: GetServerSideProps<any> = async () => {
     // @ts-ignore
-    const [animeTop, animSeasons, animeAll, animeTrendingKitsu] = await fetchDataAnimeHome();
-    console.log(animeTrendingKitsu)
+    const [animeTrendingKitsu, animeTopJikan, animeSeasonsJikan, animeSchedulesJikan] = await fetchDataAnimeHome();
+    console.log(animeSchedulesJikan);
+
     // Increment the API call count
     apiCallCount++;
     console.log(`API has been called ${apiCallCount} times`);
     return {
         props: {
-            animeTop,
-            animSeasons,
-            animeAll,
-            animeTrendingKitsu
+            animeTrendingKitsu,
+            animeTopJikan,
+            animeSeasonsJikan,
+            animeSchedulesJikan
         }
     }
 }
 
-const Home = ({animeTop, animSeasons, animeAll, animeTrendingKitsu}: Record<string, any>) => {
+const Home = ({animeTrendingKitsu, animeTopJikan, animeSeasonsJikan, animeSchedulesJikan}: Record<string, any>) => {
     return (
         <>
             <SlideTop data={animeTrendingKitsu.data}/>
@@ -51,7 +52,7 @@ const Home = ({animeTop, animSeasons, animeAll, animeTrendingKitsu}: Record<stri
 
                     <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
 
-                        {animeTop.data && animeTop.data.length ? animeTop.data?.map((item: Anime, index: number) => (
+                        {animeTopJikan.data && animeTopJikan.data.length ? animeTopJikan.data?.map((item: Anime, index: number) => (
                             <AnimeCard key={item.mal_id} anime={item} index={index}/>)) : ""}
                     </div>
                 </section>
@@ -65,19 +66,19 @@ const Home = ({animeTop, animSeasons, animeAll, animeTrendingKitsu}: Record<stri
 
                     <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
 
-                        {animSeasons.data && animSeasons.data.length ? animSeasons.data?.map((item: Anime, index: number) => (
+                        {animeSeasonsJikan.data && animeSeasonsJikan.data.length ? animeSeasonsJikan.data?.map((item: Anime, index: number) => (
                             <AnimeCard key={item.mal_id} anime={item} index={index}/>)) : ""}
                     </div>
                 </section>
 
                 <section className="flex flex-col">
                     <Button className="bg-gradient-primary w-fit text-white p-4 mb-4 capitalize">
-                        <span className="mr-2 font-medium text-xl">Anime All</span>
+                        <span className="mr-2 font-medium text-xl">Anime Schedules</span>
                         <Icon icon="iconamoon:arrow-right-2-duotone" width={24}/>
                     </Button>
 
                     <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        {animeAll.data && animeAll.data.length ? animeAll.data?.map((item: Anime, index: number) => (
+                        {animeSchedulesJikan.data && animeSchedulesJikan.data.length ? animeSchedulesJikan.data?.map((item: Anime, index: number) => (
                             <AnimeCard key={item.mal_id} anime={item} index={index}/>)) : ""}
                     </div>
                 </section>

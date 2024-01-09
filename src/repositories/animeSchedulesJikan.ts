@@ -4,17 +4,17 @@ import {ApiResponse} from "@/types/response";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-class AnimeMagazinesJikan {
+class AnimeSchedulesJikan {
     private apiFactory: ApiFactory;
 
     constructor() {
         this.apiFactory = new ApiFactory(`${API_URL}`);
     }
 
-    async getAll(params?: Record<string, any>): Promise<ApiResponse> {
-        return this.apiFactory.get<ApiResponse>('magazines', params);
+    async getAnimeSchedules(params?: Record<string, any>): Promise<ApiResponse> {
+        return this.apiFactory.get<ApiResponse>('schedules', params);
     }
 
 }
 
-export default AnimeMagazinesJikan;
+export default AnimeSchedulesJikan;

@@ -11,13 +11,8 @@ class AnimeTopJikan {
         this.apiFactory = new ApiFactory(`${API_URL}`);
     }
 
-    async getAll(params?: Record<string, any>): Promise<ApiResponse> {
+    async getTopAnime(params?: Record<string, any>): Promise<ApiResponse> {
         return this.apiFactory.get<ApiResponse>('top/anime', params);
-    }
-
-
-    async getById(id: string): Promise<ApiResponse> {
-        return await this.apiFactory.get<ApiResponse>(`top/anime/${id}`);
     }
 }
 

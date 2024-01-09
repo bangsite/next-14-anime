@@ -1,4 +1,3 @@
-import {Anime} from "@/types/anime";
 import ApiFactory from "./apiFactory";
 import {ApiResponse} from "@/types/response";
 
@@ -11,8 +10,8 @@ class AnimeJikan {
         this.apiFactory = new ApiFactory(`${API_URL}`);
     }
 
-    async getAll(params?: Record<string, any>): Promise<ApiResponse> {
-        return this.apiFactory.get<ApiResponse>('anime', params);
+    async getAnimeById(id: number, params?: Record<string, any>): Promise<ApiResponse> {
+        return this.apiFactory.get<ApiResponse>(`anime/${id}`, params);
     }
 
 }
